@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Scratch 
 /scratch.txt
+
+# To Do
+/todo.txt
