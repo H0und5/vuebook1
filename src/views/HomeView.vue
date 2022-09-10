@@ -1,6 +1,6 @@
 <template>
   <div>
-    <SignUpForm title="Gucci" />
+    <SignUpForm title="Gucci" place-hold="Testing" />
   </div>
 </template>
 

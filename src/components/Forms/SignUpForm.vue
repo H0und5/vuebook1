@@ -3,7 +3,7 @@
     <h3>{{ title }}</h3>
 
     <label>Email: </label>
-    <input />
+    <input :placeholder="placeHold" />
   </div>
 </template>
 
@@ -13,6 +13,6 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "SignUpForm",
   components: {},
-  props: ["title"],
+  props: ["title", "placeHold"],
 });
 </script>
