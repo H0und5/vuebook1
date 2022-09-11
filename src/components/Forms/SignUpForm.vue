@@ -4,22 +4,12 @@
     <p>{{ explanation }}</p>
 
     <label>Email: </label>
-    <input
-      placeholder="Enter your email here"
-      type="email"
-      required
-      v-model="email"
-    />
+    <input placeholder="Email" v-model="email" type="text" required />
 
     <br /><br />
 
     <label>Password: </label>
-    <input
-      placeholder="Enter a new password here"
-      type="password"
-      required
-      v-model="password"
-    />
+    <input placeholder="Password" type="password" required v-model="password" />
 
     <button @click.prevent="submitFormHandler" type="submit">Sign Up</button>
   </form>
@@ -27,6 +17,8 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import router from "@/router";
 
 export default defineComponent({
   name: "SignUpForm",
@@ -41,6 +33,19 @@ export default defineComponent({
       console.log(
         "Your email is: " + email.value + "Your password was: " + password.value
       );
+
+      createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+        .then((data) => {
+          router.push("/dashboard");
+          console.log("Success!" + data);
+        })
+        .catch((error) => {
+          console.log(error.code);
+          alert(error.message);
+        });
+
+      email.value = "";
+      password.value = "";
     };
 
     return {
